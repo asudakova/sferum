@@ -22,16 +22,18 @@ async function getBooks() {
 
 getBooks();
 
+//Функция для получения хэша по названию, чтобы у каждой книги был свой айди
+function getHash(bookName) {
+   return bookName.split('').reduce((a,b) => (((a << 5) - a) + b.charCodeAt(0))|0, 0);
+}
+
 function renderBooks(books) {
-   //переменная num будет задавать id книги для того, чтобы
-   //потом проверять, есть ли такая книга уже в корзине
-   let num = 0;
    if (books.length == 0) {
       document.querySelector('.books__empty').classList.remove('block-none');
    } else {
       document.querySelector('.books__empty').classList.add('block-none');
       books.forEach(book => {
-         const bookCardHTML = `<div data-id="${num}" class="books__card book">
+         const bookCardHTML = `<div data-id="${getHash(book.name)}" class="books__card book">
          <div class="book__cover">
             <img src="${book.coverUrl}" alt="${book.name}">
          </div>
@@ -44,7 +46,6 @@ function renderBooks(books) {
             <button data-action="add" type="button" class="book__into-cart-button button">В корзину</button>
          </div>
          </div>`;
-      num += 1;
       catalogue.innerHTML += bookCardHTML
       })
    }
