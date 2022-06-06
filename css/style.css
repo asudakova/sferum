@@ -1,0 +1,500 @@
+/* font-family: 'Inter', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+body {
+   font-family: 'Inter', sans-serif;
+}
+body.lock{
+   overflow: hidden;
+}
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   min-height: 100%;
+}
+[class*="_container"] {
+   max-width: 1298px;
+   margin: 0 auto;
+   padding: 0 24px;
+}
+.main {
+   flex: 1 1 auto;
+}
+
+/* Common styles for BEM-blocks ====================================== */
+.button {
+   background-color: #9262BB;
+   border: 2px solid #9262BB;
+   color: #FFFFFF;
+   border-radius: 8px;
+   cursor: pointer;
+   white-space: nowrap;
+   padding: 0px 10px;
+
+   transition: all .2s ease-in-out;
+
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   line-height: 24px;
+}
+.button:hover {
+   background-color: #644380;
+   border-color: #644380;
+} 
+.button:active {
+   color: #644380;
+   background-color: #FFFFFF;
+} 
+/* ================================================================== */
+
+/* Header styles start ============================================== */
+.header {
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 5;
+   width: 100%;
+   transition: .3s ease-in-out;
+   border-bottom: 1px solid rgba(204, 204, 204, 0.25);
+   background-color: #FFFFFF;
+   width: 100%;
+}
+.header_active {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: #b5a2c5;
+   z-index: 999;
+}
+.header__container {
+   padding-top: 20.65px;
+   padding-bottom: 20.65px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.header__logo {
+   display: flex;
+   padding-right: 20px;
+}
+.header__logo img {
+   padding-right: 15px;
+}
+.header__text {
+   font-size: 32px;
+   line-height: 38.73px;
+   white-space: nowrap;
+}
+.header__balance {
+   font-size: 20px;
+   line-height: 24.2px;
+}
+/* Header styles end ================================================ */
+
+/* Main styles start ================================================ */
+.shopping {
+   padding-top: 130px;
+}
+.shopping__container {
+   display: flex;
+}
+.shopping__books {
+   flex: 1 1 auto;
+   margin-right: 50px;
+   position: relative;
+}
+/* Filters styles start ============================================= */
+.books__filters {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+   margin-bottom: 30px;
+
+   font-size: 16px;
+   line-height: 24px;
+}
+.books__sorting {
+   padding-right: 24px;
+   background: url(../img/sorting.svg) right no-repeat;
+   cursor: pointer;
+   margin-right: 25px;
+   margin-bottom: 19px;
+}
+.books__categories {
+   position: relative;
+   margin-right: 25px;
+   margin-bottom: 19px;
+}
+.books__categories input {
+   display: none;
+}
+.books__categories label {
+   padding-right: 24px;
+   background: #FFFFFF url(../img/caret-down.svg) right no-repeat;
+   cursor: pointer;
+}
+#change-caret:checked + label{
+   background: #FFFFFF url(../img/caret-up.svg) right no-repeat;
+}
+.books__dropdown-menu {
+   display: none;
+   position: absolute;
+   left: -8px;
+   top: 100%;
+   padding: 10px 8px;
+   background: #FFFFFF;
+   border: 1px solid #CCCCCC;
+   border-radius: 8px;
+}
+#change-caret:checked ~ .books__dropdown-menu {
+   display: block;
+}
+.books__category {
+   padding-bottom: 7px;
+   border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+   cursor: pointer;
+   
+   white-space: nowrap;
+   font-size: 12px;
+   line-height: 15px;
+}
+.books__category:not(:last-child) { 
+   margin-bottom: 14px;
+}
+.books__category:hover {
+   border-bottom: 1px solid #9262BB;
+}
+.books__category.active {
+   color: #644380;
+}
+.books__searching {
+   height: 33px;
+   border-radius: 8px;
+   flex: 0 1 100%;
+}
+.searching-form {
+   display: flex;
+   align-items: center;
+   height: 100%;
+   margin-bottom: 15px;
+}
+.searching-form__text {
+   width: 50%;
+   padding: 7px 105px 7px 33px;
+   background: #FFFFFF url(../img/search.svg) 5px no-repeat;
+   border: 1px solid #C4C4C4;
+   border-radius: 8px;
+   
+   font-size: 14px;
+   line-height: 17px;
+
+   transition: .3s linear;
+}
+.searching-form__button {
+   height: 33px;
+   width: 100px;
+   margin-left: -100px;
+}
+/* Filters styles end =============================================== */
+
+/* Books catalogue styles start ===================================== */
+.books__catalogue {
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
+   grid-gap: 30px;
+   margin-bottom: 30px;
+
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   line-height: 24px;
+}
+.books__empty {
+   font-size: 14px;
+   grid-column: span 6;
+}
+.books__card {
+   grid-column: span 2;
+}
+.book {
+   min-width: 200px;
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   transition: all .3s ease-in-out;
+   border-radius: 8px;
+}
+.book:hover {
+   box-shadow: 0px 0px 5px #9262BB;
+}
+.book__cover {
+   text-align: center;
+   margin-bottom: 10px;
+}
+.book__cover img{
+   height: 200px;
+   width: auto;
+}
+.book__info {
+   height: 100%;
+   margin-bottom: 10px;
+}
+.book__title {
+   margin-bottom: 5px;
+}
+.book__author {
+   font-size: 14px;
+   color: #595959;
+}
+.book__buy {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;   
+}
+.book__price {
+   white-space: nowrap;
+   margin-right: 5px;
+}
+.book__price span{
+   font-size: 24px;
+}
+.book__into-cart-button {
+   width: 127px;
+   height: 38px;
+}
+/* Books catalogue styles end ======================================= */
+
+/* Cart styles start ================================================ */
+.shopping__cart {
+   position: sticky;
+   top: 100px;
+   left: 0;
+   flex: 0 0 310px;
+   height: calc(100vh - 130px);
+   margin-bottom: 20px;
+
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   line-height: 24px;
+}
+.cart__icon-menu {
+   display: none;
+   cursor: pointer;
+   transition: all .3s ease-in-out;
+}
+.cart {
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+}
+.cart__title {  
+   width: 178px;
+   background: url(../img/cart.svg) right no-repeat;
+   margin-bottom: 30px;
+   
+   font-family: 'Inter', sans-serif;
+   font-size: 32px;
+   line-height: 39px; 
+}
+.cart__items {
+   display: flex;
+   flex-direction: column;
+   overflow-y: auto;
+}
+.item {
+   display: flex;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+   padding-bottom: 10px;
+   margin-bottom: 20px;
+}
+.item__cover {
+   padding-right: 10px;
+}
+.item__cover img {
+   width: 70px;
+   height: auto;
+}
+.item__info {
+   width: 100%;
+}
+.item__author {
+   font-size: 14px;
+}
+.item__amount {
+   font-size: 14px;
+   color: #595959;
+}
+.item__details {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 5px;
+}
+.item__price {
+   font-family: 'Inter', sans-serif;
+   font-size: 16px;
+   line-height: 19px;
+}
+.item__price span {
+   font-size: 18px;
+   line-height: 22px;
+}
+.item__delete {
+   width: 24px;
+   height: 24px;
+   background: url(../img/delete.svg) no-repeat;
+}
+.cart__buy {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 15px;
+}
+.cart__total-price {
+   font-family: 'Inter', sans-serif;
+   font-size: 20px;
+   margin-bottom: 13px;
+}
+.cart__total-price span {
+   font-size: 32px;
+   line-height: 39px;
+}
+.cart__buy-button {
+   width: 200px;
+   height: 42px;
+}
+.block-none {
+   display: none;
+}
+.cart__empty,
+.cart__purchaseIsOkay,
+.cart__purchaseIsNotOkay {
+   text-align: center;
+   font-family: 'Inter', sans-serif;
+   padding: 20px 0 5px;
+}
+.cart__empty {
+   color: rgba(0, 0, 0, 0.6);
+   font-size: 14px;
+   line-height: 17px;
+}
+.cart__purchaseIsOkay {
+   color: rgb(27, 193, 21);
+}
+.cart__purchaseIsNotOkay {
+   color: rgb(211, 29, 29);
+}
+/* Cart styles end ================================================== */
+
+/* Main styles end ================================================== */
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+}
+
+/* Landscape tablets and medium desktops */
+@media (max-width: 1199.98px) {
+   .shopping__books {
+      margin-right: 30px;
+   }
+   .books__catalogue {
+      column-gap: 23px;
+      row-gap: 23px;
+   }
+   .shopping__cart {
+      flex: 0 0 270px;
+   }
+}
+
+/* Portrait tablets and small desktops */
+@media (max-width: 991.98px) {
+   .searching-form__text {
+      width: 100%;
+   }
+   .books__catalogue {
+      column-gap: 18px;
+      row-gap: 18px;
+   }
+   .books__card {
+      grid-column: span 3;
+   }
+   .book__cover img {
+      height: 180px;
+   }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767.98px) {
+   .shopping__books {
+      margin-right: 0;
+   }
+   .cart__icon-menu {
+      display: block;
+      position: absolute;
+      top: 130px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      background: url(../img/cart.svg) center no-repeat;
+   }
+   .cart__icon-menu.active {
+      top: 24px;
+      background: url(../img/delete-big.svg) center no-repeat;
+      z-index: 10000;
+   }
+   .shopping__cart {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #FFFFFF;
+      z-index: 9999;
+      transition: all .3s ease-in-out;
+   }
+   .cart {
+      padding: 24px;
+   }
+   .shopping__cart.active {
+      top: 0;
+   }
+   .item__cover img {
+      width: 100px;
+   }
+   .item__title {
+      font-size: 16px;
+   }
+   .item__delete {
+      width: 40px;
+      height: 40px;
+      background: url(../img/delete-big.svg) no-repeat;
+   }
+}
+@media (max-width: 530.98px) {
+   .header__container {
+      flex-wrap: wrap;
+   }
+   .header__text {
+      line-height: 32px;
+   }
+   .header__balance {
+      padding-top: 10px;
+   }
+}
+/* Portrait phones and smaller */
+@media (max-width: 479.98px) {
+   .searching-form__text {
+      padding-right: 10px;
+   }
+   .searching-form__button {
+      display: none;
+   }
+   .books__categories {
+      margin-right: 65px;
+   }
+   .books__card {
+      grid-column: span 6;
+   }
+}

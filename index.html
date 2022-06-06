@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Магазин книг</title>
+   <link rel="stylesheet" href="./css/small-reset.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+   <div class="wrapper">
+      <header class="header">
+         <div class="header__container">
+            <div class="header__logo">
+               <img src="./img/logo.svg" alt="Main logo">
+               <h1 class="header__text">Магазин книг</h1>
+            </div>
+            <div class="header__balance">Баланс: <span>10200</span> руб.</div>
+         </div>
+      </header>
+      <main class="main">
+         <div class="shopping">
+            <div class="shopping__container">
+               <div class="shopping__books books">
+                  <div class="books__filters">
+                     <div class="books__sorting ASC" data-action="sort"> Сортировать по цене</div>
+                     <div class="books__categories">
+                        <input type="checkbox" id="change-caret">
+                        <label for="change-caret">Категории</label> 
+                        <div class="books__dropdown-menu"></div>
+                     </div>
+                     <form class="books__searching searching-form">
+                        <input type="text" name="text" class="searching-form__text"
+                           placeholder="Введите название книги">
+                        <input data-action="search" type="submit" name="submit" class="searching-form__button button" value="Найти">
+                     </form>
+                  </div>
+                  <div class="books__catalogue">
+                     <div class="books__empty block-none">К сожалению, по данному запросу ничего не нашлось</div>
+                  </div>
+               </div>
+               <div class="cart__icon-menu"></div>
+               <div class="shopping__cart cart">
+                  <h2 class="cart__title">Корзина</h2>
+                  <div class="cart__items"></div>
+                  <div class="cart__empty">Нет добавленных книг</div>
+                  <div class="cart__purchaseIsOkay block-none">Покупка прошла успешно</div>
+                  <div class="cart__purchaseIsNotOkay block-none">Недостаточно денег для заказа</div>
+                  <div class="cart__buy block-none">
+                     <div class="cart__total-price"><span>0</span> руб.</div>
+                     <button data-action="buy" type="button" class="cart__buy-button button">Купить</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+   <script src="./js/index.js"></script>
+   <script src="./js/renderingCategories.js"></script>
+   <script src="./js/renderingBooks.js"></script>
+   <script src="./js/cart.js"></script>
+   <script src="./js/filters.js"></script>
+</body>
+</html>
